@@ -30,6 +30,11 @@ const routes = [
                 path: "MonacoEditor",
                 component: () =>
                     import(/* webpackChunkName: "" */ "../views/0710/MonacoEditor")
+            },
+            {
+                path: "GreyScale",
+                component: () =>
+                    import(/* webpackChunkName: "" */ "../views/0710/GreyScale")
             }
         ]
     }
