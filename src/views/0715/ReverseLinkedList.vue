@@ -142,6 +142,7 @@ class LinkedList {
       return
     }
 
+    let reversedList = new LinkedList()
     let node = this.head
     let next = null
     let current = null
@@ -152,7 +153,9 @@ class LinkedList {
       current = node
       node = next
     }
-    return current
+    reversedList.head = current
+    reversedList.count = this.size()
+    return reversedList
   }
 }
 
@@ -170,7 +173,7 @@ export default {
     generateList() {
       const list = new LinkedList()
       for (let i = 0; i < 10; i++) {
-        list.push(i)
+        list.push(Math.floor(Math.random() * 100))
       }
       this.list = list
       this.listStr = this.list.toStringLL()
@@ -178,20 +181,7 @@ export default {
 
     reverseList() {
       this.reversedList = this.list.reverse()
-      this.reversedListStr = this.LLToString(this.reversedList)
-    },
-
-    LLToString(obj) {
-      if(typeof obj === 'undefined' || !obj.next) {
-        return
-      }
-      let objString = `${obj.element}`
-      let current = obj.next
-      while (current != null) {
-        objString = `${objString}, ${current.element}`
-        current = current.next
-      }
-      return objString
+      this.reversedListStr = this.reversedList.toStringLL()
     }
   }
 }
