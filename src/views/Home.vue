@@ -5,6 +5,8 @@
     |
     <router-link to="/0710">0710</router-link>
     |
+    <router-link to="/0715">0715</router-link>
+    |
     <router-link to="/Home">返回</router-link>
   </div>
 </template>

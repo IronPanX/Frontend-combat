@@ -37,6 +37,33 @@ const routes = [
                     import(/* webpackChunkName: "" */ "../views/0710/GreyScale")
             }
         ]
+    },
+    {
+        path: "/0715",
+        component: () =>
+            import(/* webpackChunkName: "" */ "../views/0715/Index"),
+        children: [
+            {
+                path: "ReverseLinkedList",
+                component: () =>
+                    import(/* webpackChunkName: "" */ "../views/0715/ReverseLinkedList")
+            },
+            {
+                path: "NthBigNumberInArray",
+                component: () =>
+                    import(/* webpackChunkName: "" */ "../views/0715/NthBigNumberInArray")
+            },
+            {
+                path: "LongestSubstringWithoutRepeat",
+                component: () =>
+                    import(/* webpackChunkName: "" */ "../views/0715/LongestSubstringWithoutRepeat")
+            },
+            {
+                path: "BitOperationBitMask",
+                component: () =>
+                    import(/* webpackChunkName: "" */ "../views/0715/BitOperationBitMask")
+            }
+        ]
     }
 ];
 
