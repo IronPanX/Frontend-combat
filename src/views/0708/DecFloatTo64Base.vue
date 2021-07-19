@@ -85,13 +85,14 @@ export default {
 
 
     encode() {
-      let pointIndex = '', int64 = '', dec64 = ''
+      let pointIndex = '', int64 = '', dec64 = '', isFloat='0'
       let numArr = Math.abs(parseFloat(this.inputNum)).toString().split('.')
       let pm = this.inputNum > 0 ? '1' : '0'
       int64 = this.to64INT(numArr[0])
 
       if (numArr[1]) {
         pointIndex = this.to64INT(int64.length)
+        isFloat = '1'
         if (this.calType === 'INT') {
           dec64 = this.to64INT(numArr[1])
         } else {
@@ -103,7 +104,7 @@ export default {
       }
 
       // 符号 + 点位置 + 整数部分 + 小数部分
-      this.outputStr = pm + pointIndex + int64 + dec64
+      this.outputStr = pm + isFloat + pointIndex + int64 + dec64
     },
 
     to10INT(str) {
@@ -126,12 +127,13 @@ export default {
 
     decode() {
       let pm = this.getVal(this.inputStr[0])
-      let pointIndex = this.getVal(this.inputStr[1])
-      let intStr = this.inputStr.slice(2, pointIndex + 2)
-      let decStr = this.inputStr.slice(pointIndex + 2)
+      let isFloat = this.getVal(this.inputStr[1])
+      let pointIndex = this.getVal(this.inputStr[2])
+      let intStr = isFloat === 1 ? this.inputStr.slice(3, pointIndex + 3) : this.inputStr.slice(pointIndex + 3)
+      let decStr = isFloat === 1 ? this.inputStr.slice(pointIndex + 3) : ''
 
       if (this.calType === 'INT') {
-        this.outputNum = (pm === 1 ? '' : '-') + this.to10INT(intStr) + (pointIndex === '0' ? '' : '.') + this.to10INT(decStr)
+        this.outputNum = (pm === 1 ? '' : '-') + (intStr ? this.to10INT(intStr): 0) + (isFloat === 1 ? '.' : '') + (decStr ? this.to10INT(decStr) : '')
       } else {
         this.outputNum = (pm === 1 ? '' : '-') + (this.to10INT(intStr) + this.to10DEC(decStr))
       }
