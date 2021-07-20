@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>0708</h1>
-    <router-link to="/0708/DecFloatTo64Base">10进制浮点转64进制</router-link>
+    <h1>0717</h1>
+    <router-link to="/0717/RenderFunction">实现render函数</router-link>
     |
     <router-link to="/">返回</router-link>
     <router-view></router-view>

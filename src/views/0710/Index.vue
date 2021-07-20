@@ -5,7 +5,7 @@
     |
     <router-link to="/0710/GreyScale">图片转灰度图</router-link>
     |
-    <router-link to="/0710">返回</router-link>
+    <router-link to="/">返回</router-link>
     <router-view></router-view>
   </div>
 </template>

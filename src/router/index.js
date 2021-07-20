@@ -52,16 +52,18 @@ const routes = [
                 path: "NthBigNumberInArray",
                 component: () =>
                     import(/* webpackChunkName: "" */ "../views/0715/NthBigNumberInArray")
-            },
+            }
+        ]
+    },
+    {
+        path: "/0717",
+        component: () =>
+            import(/* webpackChunkName: "" */ "../views/0717/Index"),
+        children: [
             {
-                path: "LongestSubstringWithoutRepeat",
+                path: "RenderFunction",
                 component: () =>
-                    import(/* webpackChunkName: "" */ "../views/0715/LongestSubstringWithoutRepeat")
-            },
-            {
-                path: "BitOperationBitMask",
-                component: () =>
-                    import(/* webpackChunkName: "" */ "../views/0715/BitOperationBitMask")
+                    import(/* webpackChunkName: "" */ "../views/0717/RenderFunction")
             }
         ]
     }
