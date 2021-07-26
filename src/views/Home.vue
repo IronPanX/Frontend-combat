@@ -9,6 +9,8 @@
     |
     <router-link to="/0717">0717</router-link>
     |
+    <router-link to="/0722">0722</router-link>
+    |
     <router-link to="/">返回</router-link>
   </div>
 </template>

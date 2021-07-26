@@ -66,6 +66,18 @@ const routes = [
                     import(/* webpackChunkName: "" */ "../views/0717/RenderFunction")
             }
         ]
+    },
+    {
+        path: "/0722",
+        component: () =>
+            import(/* webpackChunkName: "" */ "../views/0722/Index"),
+        children: [
+            {
+                path: "OnlineEditorPreview",
+                component: () =>
+                    import(/* webpackChunkName: "" */ "../views/0722/OnlineEditorPreview/Index")
+            }
+        ]
     }
 ];
 

@@ -1,37 +1,44 @@
 <template>
   <div>
-    <h2>使用monaco-editor编辑保存代码</h2>
+    <h2>在线编辑器预览</h2>
     <div>
       Language:
       <select id="languageSelect" v-model="language" @change="handleLanguage">
         <option value="html">HTML</option>
         <option value="css">CSS</option>
         <option value="javascript">Javascript</option>
+        <option value="vue">Vue</option>
       </select>
       |
       <input ref="readFile" :accept="suffix" type="file" @input="readFile">
       |
       <button @click="saveFile">保存文件</button>
+      |
+      <button @click="preview">预览</button>
     </div>
     <br>
-    <div id="container" style="width: 1280px;height: 720px;"></div>
+    <div class="flex-container">
+      <div id="container" style="width: 60%;height: 720px;"></div>
+      <iframe id="frame" src="" style="width: 40%;height: 720px;"></iframe>
+    </div>
   </div>
 </template>
 
 <script>
 import * as monaco from 'monaco-editor'
+import axios from 'axios'
 
 export default {
-  name: "MonacoEditor",
+  name: "Index",
   data() {
     return {
-      language: 'html',
-      suffix: '.html',
+      language: 'javascript',
+      suffix: '.js',
       name: '',
       suffixes: {
         'html': '.html',
         'css': '.css',
-        'javascript': '.js'
+        'javascript': '.js',
       }
     }
   },
@@ -42,7 +49,7 @@ export default {
     initEditor() {
       monaco.editor.create(document.getElementById('container'), {
         value: '',
-        language: 'html',
+        language: 'javascript',
         automaticLayout: true,
         theme: 'vs-dark'
       });
@@ -69,8 +76,24 @@ export default {
       document.body.appendChild(downloadEl);
       downloadEl.click();
       document.body.removeChild(downloadEl);
+    },
+    preview() {
+      axios.post('http://localhost/node/upload', {
+        data: monaco.editor.getModels()[0].getValue(),
+        suffix: this.suffix
+      }).then(res => {
+        console.log(res)
+        let iframeEl = document.getElementById('frame')
+        iframeEl.src = res.data.url
+      }).catch(err => console.log(err))
+
     }
   }
 }
 </script>
-<style></style>
+
+<style scoped>
+.flex-container {
+  display: flex;
+}
+</style>
