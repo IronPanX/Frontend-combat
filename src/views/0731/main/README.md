@@ -1,0 +1,30 @@
+# main
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Build Docker image
+```
+.\build.sh
+```
+### Run Docker container
+```
+.\run.sh
+```
