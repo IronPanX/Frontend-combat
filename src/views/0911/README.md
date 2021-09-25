@@ -2,6 +2,6 @@
 
 ## Run 
 ```
-cd 
-npm run serve
+cd element-plus/examples
+npm run dev
 ```
